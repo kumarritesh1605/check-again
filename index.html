@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Surprise 💫</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  min-height:100vh;
+  overflow-x:hidden;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  background:linear-gradient(180deg,#101735,#253b73 55%,#ffd9e8);
+  color:white;
+}
+
+/* ---------- BACKGROUND ---------- */
+
+.sky{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:0;
+}
+
+.star{
+  position:absolute;
+  width:4px;
+  height:4px;
+  background:white;
+  border-radius:50%;
+  animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+  from{opacity:.2;transform:scale(.7)}
+  to{opacity:1;transform:scale(1.5)}
+}
+
+.cloud{
+  position:absolute;
+  width:180px;
+  height:55px;
+  background:rgba(255,255,255,.18);
+  border-radius:50px;
+  filter:blur(.3px);
+  animation:cloudMove 25s linear infinite;
+}
+
+.cloud:before,
+.cloud:after{
+  content:"";
+  position:absolute;
+  background:inherit;
+  border-radius:50%;
+}
+
+.cloud:before{
+  width:80px;
+  height:80px;
+  left:25px;
+  bottom:10px;
+}
+
+.cloud:after{
+  width:65px;
+  height:65px;
+  right:30px;
+  bottom:8px;
+}
+
+.cloud1{top:15%;left:-220px}
+.cloud2{top:35%;left:-400px;animation-delay:8s;opacity:.6}
+
+@keyframes cloudMove{
+  to{transform:translateX(130vw)}
+}
+
+/* ---------- MAIN ---------- */
+
+.container{
+  position:relative;
+  z-index:2;
+  width:min(92%,720px);
+  margin:auto;
+  padding:30px 0 60px;
+  text-align:center;
+}
+
+/* ---------- CARTOON CHARACTER ---------- */
+
+.character{
+  width:115px;
+  height:115px;
+  margin:25px auto;
+  position:relative;
+  animation:float 3s ease-in-out infinite;
+}
+
+.character .body{
+  width:95px;
+  height:85px;
+  background:#ffd4e5;
+  border-radius:48% 48% 45% 45%;
+  position:absolute;
+  left:10px;
+  bottom:0;
+  box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+.character .ear{
+  width:35px;
+  height:35px;
+  background:#ffd4e5;
+  border-radius:50%;
+  position:absolute;
+  top:5px;
+}
+
+.character .ear.left{left:5px}
+.character .ear.right{right:5px}
+
+.face{
+  position:absolute;
+  width:85px;
+  height:75px;
+  background:#fff0f6;
+  border-radius:50%;
+  left:15px;
+  top:18px;
+}
+
+.eye{
+  position:absolute;
+  width:8px;
+  height:12px;
+  background:#303047;
+  border-radius:50%;
+  top:28px;
+}
+
+.eye.left{left:25px}
+.eye.right{right:25px}
+
+.mouth{
+  position:absolute;
+  width:22px;
+  height:12px;
+  border-bottom:3px solid #303047;
+  border-radius:50%;
+  bottom:18px;
+  left:32px;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0) rotate(-2deg)}
+  50%{transform:translateY(-12px) rotate(2deg)}
+}
+
+/* ---------- CARDS ---------- */
+
+.card{
+  background:rgba(255,255,255,.13);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:30px;
+  padding:32px 25px;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+  animation:cardIn .8s ease;
+}
+
+@keyframes cardIn{
+  from{
+    opacity:0;
+    transform:translateY(35px) scale(.95);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+h1{
+  font-size:clamp(30px,7vw,55px);
+  margin-bottom:12px;
+}
+
+h2{
+  font-size:clamp(24px,6vw,38px);
+  margin-bottom:15px;
+}
+
+p{
+  font-size:18px;
+  line-height:1.7;
+}
+
+.small{
+  opacity:.75;
+  font-size:14px;
+}
+
+/* ---------- COUNTDOWN ---------- */
+
+.countdown{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:25px 0;
+}
+
+.timebox{
+  background:rgba(255,255,255,.16);
+  border-radius:18px;
+  padding:15px 12px;
+  min-width:75px;
+  box-shadow:0 8px 25px rgba(0,0,0,.15);
+}
+
+.timebox b{
+  display:block;
+  font-size:25px;
+}
+
+.timebox span{
+  font-size:11px;
+  opacity:.7;
+}
+
+/* ---------- BUTTON ---------- */
+
+button{
+  border:0;
+  padding:15px 30px;
+  border-radius:50px;
+  background:linear-gradient(135deg,#ff86b7,#ff5e9c);
+  color:white;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 8px 25px rgba(255,80,150,.35);
+  transition:.25s;
+}
+
+button:hover{
+  transform:translateY(-4px) scale(1.04);
+}
+
+button:active{
+  transform:scale(.96);
+}
+
+/* ---------- INPUT ---------- */
+
+input{
+  width:100%;
+  max-width:420px;
+  padding:16px 20px;
+  border-radius:50px;
+  border:2px solid rgba(255,255,255,.35);
+  background:rgba(255,255,255,.12);
+  color:white;
+  outline:none;
+  text-align:center;
+  font-size:17px;
+  margin:20px auto;
+}
+
+input::placeholder{
+  color:rgba(255,255,255,.6);
+}
+
+.message{
+  margin-top:18px;
+  min-height:30px;
+  font-weight:bold;
+}
+
+/* ---------- EMOJIS ---------- */
+
+.stickers{
+  font-size:35px;
+  margin:15px 0;
+  animation:wiggle 2s infinite;
+}
+
+@keyframes wiggle{
+  0%,100%{transform:rotate(0)}
+  25%{transform:rotate(-5deg)}
+  75%{transform:rotate(5deg)}
+}
+
+/* ---------- LETTER ---------- */
+
+.letter{
+  background:#fffaf0;
+  color:#4b4050;
+  padding:30px 24px;
+  border-radius:22px;
+  text-align:left;
+  box-shadow:0 15px 45px rgba(0,0,0,.25);
+  animation:letterOpen 1s ease;
+}
+
+@keyframes letterOpen{
+  from{
+    transform:rotateX(70deg) translateY(40px);
+    opacity:0;
+  }
+  to{
+    transform:rotateX(0) translateY(0);
+    opacity:1;
+  }
+}
+
+.letter p{
+  font-size:18px;
+  margin-bottom:18px;
+}
+
+/* ---------- CONFETTI ---------- */
+
+.confetti{
+  position:fixed;
+  top:-20px;
+  width:10px;
+  height:18px;
+  z-index:10;
+  animation:fall 3s linear forwards;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(720deg);
+  }
+}
+
+/* ---------- FINAL ---------- */
+
+.final{
+  animation:finalIn 1.2s ease;
+}
+
+@keyframes finalIn{
+  from{
+    opacity:0;
+    transform:scale(.7);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+.heart{
+  display:inline-block;
+  font-size:70px;
+  animation:heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.25)}
+}
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:500px){
+  .card{
+    padding:25px 17px;
+  }
+
+  p{
+    font-size:16px;
+  }
+
+  .timebox{
+    min-width:65px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="sky">
+  <div class="cloud cloud1"></div>
+  <div class="cloud cloud2"></div>
+</div>
+
+<div class="container" id="app"></div>
+
+<script>
+
+/* =====================================================
+   CREATE STARS
+===================================================== */
+
+for(let i=0;i<70;i++){
+  const star=document.createElement("div");
+  star.className="star";
+  star.style.left=Math.random()*100+"%";
+  star.style.top=Math.random()*100+"%";
+  star.style.animationDelay=Math.random()*3+"s";
+  document.querySelector(".sky").appendChild(star);
+}
+
+
+/* =====================================================
+   TARGET DATE
+   18 OCTOBER 2026 — 12:00 AM INDIA
+===================================================== */
+
+const target = new Date("2026-10-18T00:00:00+05:30").getTime();
+
+const app=document.getElementById("app");
+
+
+/* =====================================================
+   LOCK SCREEN
+===================================================== */
+
+function showLock(){
+
+app.innerHTML=`
+
+<div class="character">
+  <div class="ear left"></div>
+  <div class="ear right"></div>
+  <div class="body"></div>
+  <div class="face">
+    <div class="eye left"></div>
+    <div class="eye right"></div>
+    <div class="mouth"></div>
+  </div>
+</div>
+
+<div class="card">
+
+<div class="stickers">🌙 ✨ 🧸</div>
+
+<h1>Hmm... 👀</h1>
+
+<p>
+There is something waiting here.
+</p>
+
+<p class="small">
+But you're a little too early...
+</p>
+
+<div class="countdown">
+
+<div class="timebox">
+<b id="days">00</b>
+<span>DAYS</span>
+</div>
+
+<div class="timebox">
+<b id="hours">00</b>
+<span>HOURS</span>
+</div>
+
+<div class="timebox">
+<b id="minutes">00</b>
+<span>MINUTES</span>
+</div>
+
+<div class="timebox">
+<b id="seconds">00</b>
+<span>SECONDS</span>
+</div>
+
+</div>
+
+<p class="small">
+Come back when the clock says it's time. 🌙
+</p>
+
+</div>
+`;
+
+updateCountdown();
+}
+
+
+/* =====================================================
+   COUNTDOWN
+===================================================== */
+
+function updateCountdown(){
+
+const now=new Date().getTime();
+const distance=target-now;
+
+if(distance<=0){
+  showIntro();
+  return;
+}
+
+const days=Math.floor(distance/(1000*60*60*24));
+const hours=Math.floor((distance/(1000*60*60))%24);
+const minutes=Math.floor((distance/(1000*60))%60);
+const seconds=Math.floor((distance/1000)%60);
+
+document.getElementById("days").innerText=days;
+document.getElementById("hours").innerText=String(hours).padStart(2,"0");
+document.getElementById("minutes").innerText=String(minutes).padStart(2,"0");
+document.getElementById("seconds").innerText=String(seconds).padStart(2,"0");
+}
+
+showLock();
+
+setInterval(updateCountdown,1000);
+
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+function showIntro(){
+
+app.innerHTML=`
+
+<div class="character">
+  <div class="ear left"></div>
+  <div class="ear right"></div>
+  <div class="body"></div>
+  <div class="face">
+    <div class="eye left"></div>
+    <div class="eye right"></div>
+    <div class="mouth"></div>
+  </div>
+</div>
+
+<div class="card">
+
+<div class="stickers">🌸 🧸 ✨</div>
+
+<h1>Oh... you're here. 👀</h1>
+
+<p>
+Okay, okay...
+<br>
+I suppose you've earned the right to continue.
+</p>
+
+<p>
+But there's one tiny problem...
+</p>
+
+<p>
+<strong>You have to unlock it yourself. 😌</strong>
+</p>
+
+<br>
+
+<button onclick="startPuzzle()">
+Let's see 👀
+</button>
+
+</div>
+`;
+}
+
+
+/* =====================================================
+   PUZZLE 1
+===================================================== */
+
+function startPuzzle(){
+
+app.innerHTML=`
+
+<div class="card">
+
+<div class="stickers">🧩 ⏰ 🧸</div>
+
+<h2>Okay, easy one 😌</h2>
+
+<p>
+I have a face but no eyes.<br>
+I have hands but no arms.<br>
+I can tell you something,
+but I cannot speak.
+</p>
+
+<p><strong>What am I?</strong> 🤔</p>
+
+<input id="answer" placeholder="Type your answer...">
+
+<button onclick="checkPuzzle1()">Unlock 🔓</button>
+
+<div class="message" id="msg"></div>
+
+</div>
+`;
+
+}
+
+
+/* =====================================================
+   CHECK PUZZLE 1
+===================================================== */
+
+function checkPuzzle1(){
+
+let ans=document.getElementById("answer").value.toLowerCase().trim();
+
+if(ans.includes("clock") || ans.includes("watch")){
+
+showSuccess("Okayyy... that was easy. 😌");
+
+setTimeout(bloodPuzzle,900);
+
+}else{
+
+document.getElementById("msg").innerHTML=
+"❌ Nope 😭 Hint: You look at me to know the time.";
+}
+
+}
+
+
+/* =====================================================
+   BLOOD RELATION PUZZLE
+===================================================== */
+
+function bloodPuzzle(){
+
+app.innerHTML=`
+
+<div class="card">
+
+<div class="stickers">🧠 👨‍👩‍👧‍👦 ✨</div>
+
+<h2>Reasoning time 🧠</h2>
+
+<p>
+Riya says:
+<br><br>
+<strong>
+"That boy is the son of my mother's only daughter."
+</strong>
+<br><br>
+
+Who is the boy to Riya?
+</p>
+
+<br>
+
+<button onclick="relation('brother')">Brother</button>
+<br><br>
+<button onclick="relation('son')">Son</button>
+<br><br>
+<button onclick="relation('nephew')">Nephew</button>
+
+<div class="message" id="relationMsg"></div>
+
+</div>
+`;
+}
+
+
+/* =====================================================
+   CHECK RELATION
+===================================================== */
+
+function relation(answer){
+
+if(answer==="son"){
+
+showSuccess("Correct! 🧠✨");
+
+setTimeout(malayalamRound,900);
+
+}else{
+
+document.getElementById("relationMsg").innerHTML=
+"❌ Think carefully. Who is mother's only daughter? 👀";
+}
+
+}
+
+
+/* =====================================================
+   MALAYALAM ROUND
+===================================================== */
+
+function malayalamRound(){
+
+app.innerHTML=`
+
+<div class="card">
+
+<div class="stickers">🌴 🌸 🐘</div>
+
+<h2>Okay... Malayalam round 😌</h2>
+
+<p>
+I am speaking in Malayalam now.
+</p>
+
+<p style="font-size:21px;margin-top:20px">
+
+ഞാൻ സമയത്തെ കാണിക്കുന്നു,<br>
+പക്ഷേ എനിക്ക് സംസാരിക്കാൻ കഴിയില്ല.<br><br>
+
+ഞാൻ ആരാണ്? 🤔
+
+</p>
+
+<p class="small">
+Hint: You already solved this once. 👀
+</p>
+
+<input id="malayalamAnswer" placeholder="Answer...">
+
+<button onclick="checkMalayalam()">Unlock 💗</button>
+
+<div class="message" id="malayalamMsg"></div>
+
+</div>
+`;
+}
+
+
+/* =====================================================
+   CHECK MALAYALAM
+===================================================== */
+
+function checkMalayalam(){
+
+let ans=document.getElementById("malayalamAnswer").value.toLowerCase().trim();
+
+if(
+ans.includes("clock") ||
+ans.includes("watch") ||
+ans.includes("മണിക്കൂർ") ||
+ans.includes("ഘടികാരം")
+){
+
+showSuccess("നന്നായി! 😌❤️");
+
+setTimeout(finalMessage,1000);
+
+}else{
+
+document.getElementById("malayalamMsg").innerHTML=
+"❌ Hint: It was the answer to the first puzzle. 😭";
+}
+
+}
+
+
+/* =====================================================
+   SUCCESS MESSAGE
+===================================================== */
+
+function showSuccess(text){
+
+app.innerHTML=`
+
+<div class="card">
+
+<div class="stickers">✨ 🎀 🧸 ✨</div>
+
+<h2>${text}</h2>
+
+<p>
+Loading the next little surprise...
+</p>
+
+</div>
+`;
+}
+
+
+/* =====================================================
+   FINAL MESSAGE
+===================================================== */
+
+function finalMessage(){
+
+createConfetti();
+
+app.innerHTML=`
+
+<div class="final">
+
+<div class="character">
+  <div class="ear left"></div>
+  <div class="ear right"></div>
+  <div class="body"></div>
+  <div class="face">
+    <div class="eye left"></div>
+    <div class="eye right"></div>
+    <div class="mouth"></div>
+  </div>
+</div>
+
+<div class="card">
+
+<div class="stickers">
+🌸 🧸 🎀 ✨ 🌷
+</div>
+
+<h1>Finally. 💗</h1>
+
+<p>
+You actually made it through all that.
+</p>
+
+<br>
+
+<div class="letter">
+
+<p>
+I know you don't really celebrate this day,
+but it is still an important day.
+</p>
+
+<p>
+So live this day.
+Enjoy it.
+And don't forget to be a little kinder to yourself.
+</p>
+
+<p>
+Because sometimes we are much harder on ourselves
+than we ever need to be.
+</p>
+
+<p>
+And here's something I wanted you to read:
+</p>
+
+<p style="text-align:center;font-weight:bold">
+
+खुद को भी कभी खुद से मिलाया करो,<br>
+जो हो तुम, उसी को दिल से अपनाया करो।<br>
+दुनिया तो कमियाँ गिनाती रहेगी उम्र भर,<br>
+तुम खुद को हर हाल में गले लगाया करो।
+
+</p>
+
+<p style="text-align:center">
+🌸 Stay the way you are. 🌸
+</p>
+
+</div>
+
+<br>
+
+<div class="heart">❤️</div>
+
+<h2>For Swathi</h2>
+
+<p class="small">
+A little something made just for you.
+</p>
+
+</div>
+
+</div>
+`;
+
+}
+
+
+/* =====================================================
+   CONFETTI
+===================================================== */
+
+function createConfetti(){
+
+for(let i=0;i<100;i++){
+
+const c=document.createElement("div");
+
+c.className="confetti";
+
+c.style.left=Math.random()*100+"vw";
+
+c.style.background=[
+"#ff7eb3",
+"#ffd166",
+"#8ecae6",
+"#caffbf",
+"#bdb2ff",
+"#ffffff"
+][Math.floor(Math.random()*6)];
+
+c.style.animationDuration=(2+Math.random()*3)+"s";
+
+c.style.animationDelay=Math.random()*1.5+"s";
+
+document.body.appendChild(c);
+
+setTimeout(()=>c.remove(),6000);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
